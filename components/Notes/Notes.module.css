@@ -1,0 +1,22 @@
+.ul {
+  list-style: none;
+  background-color: #e7e7e8;
+  padding: 0px;
+  margin: 0px;
+}
+
+.active {
+  color: rgb(103, 103, 103);
+  text-decoration: line-through;
+}
+.ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid #1976d2;
+}
+
+.ul button {
+  margin: 0 16px;
+}
