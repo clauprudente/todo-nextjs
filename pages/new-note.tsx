@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import React, { useEffect, useState } from "react";
 import { Header } from "../components";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Checkbox } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import styles from "../styles/new-note.module.css";
 import Link from "next/link";
@@ -16,17 +16,15 @@ interface INewNotesProps {
 
 const NewNote: NextPage<INewNotesProps> = () => {
   const router = useRouter();
-  const [newNote, setNewNote] = useState<INote[]>([
-    { title: "", description: "", checked: false },
-  ]);
-
-  const { isEdit, indexEdit, addNote, onEdit, getNote } = useNotesContext();
+  const [newNote, setNewNote] = useState<INote[]>([]);
+  const { isEdit, indexEdit, addNote, onEdit, getNote, onCheck } =
+    useNotesContext();
 
   useEffect(() => {
     if (isEdit) {
       setNewNote(getNote(indexEdit));
     }
-  }, []);
+  }, [isEdit, indexEdit, getNote]);
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewNote({
@@ -42,6 +40,14 @@ const NewNote: NextPage<INewNotesProps> = () => {
       title: newNote.title,
       description: event.target.value,
       checked: newNote.checked,
+    });
+  };
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewNote({
+      title: newNote.title,
+      description: newNote.description,
+      checked: event.target.checked,
     });
   };
 
@@ -73,11 +79,16 @@ const NewNote: NextPage<INewNotesProps> = () => {
             Voltar
           </Button>
         </Link>
+        <Checkbox
+          checked={newNote.checked ? true : false}
+          onChange={(e) => handleCheckboxChange(e)}
+          inputProps={{ "aria-label": "controlled" }}
+        />
         <TextField
           id="outlined-static"
           fullWidth
           label="Título"
-          value={newNote.title}
+          value={newNote.title || ""}
           onChange={handleTitleChange}
         />
         <TextField
@@ -86,7 +97,7 @@ const NewNote: NextPage<INewNotesProps> = () => {
           label="Descrição"
           multiline
           rows={8}
-          value={newNote.description}
+          value={newNote.description || ""}
           onChange={handleDescriptionChange}
         />
         <Button variant="contained" onClick={() => handleClick()}>

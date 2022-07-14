@@ -1,7 +1,7 @@
 interface INote {
   title: string;
-  checked: boolean;
   description: string;
+  checked: boolean;
 }
 
 export default INote;

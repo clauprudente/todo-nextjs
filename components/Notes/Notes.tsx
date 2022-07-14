@@ -34,28 +34,31 @@ export const Notes = (props: INotesProps) => {
     <ul className={styles.ul}>
       {notes.map((note, index) => (
         <li key={index} className={note.checked ? `${styles.active}` : ""}>
-          <Checkbox
-            checked={note.checked ? true : false}
-            onChange={(e) => handleChange(e, index)}
-            inputProps={{ "aria-label": "controlled" }}
-          />
-          {note.title}
-          <IconButton
-            color="primary"
-            aria-label="delete"
-            size="small"
-            onClick={() => handleEdit(index)}
-          >
-            <EditIcon fontSize="inherit" />
-          </IconButton>
-          <IconButton
-            color="primary"
-            aria-label="delete"
-            size="small"
-            onClick={() => handleDelete(index)}
-          >
-            <DeleteIcon fontSize="inherit" />
-          </IconButton>
+          <div className={styles.flex}>
+            <Checkbox
+              checked={note.checked ? true : false}
+              onChange={(e) => handleChange(e, index)}
+              inputProps={{ "aria-label": "controlled" }}
+            />
+            {note.title}
+            <IconButton
+              color="primary"
+              aria-label="delete"
+              size="small"
+              onClick={() => handleEdit(index)}
+            >
+              <EditIcon fontSize="inherit" />
+            </IconButton>
+            <IconButton
+              color="primary"
+              aria-label="delete"
+              size="small"
+              onClick={() => handleDelete(index)}
+            >
+              <DeleteIcon fontSize="inherit" />
+            </IconButton>
+          </div>
+          <label>{note.description}</label>
         </li>
       ))}
     </ul>

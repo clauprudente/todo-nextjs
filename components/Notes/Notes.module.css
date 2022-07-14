@@ -9,12 +9,15 @@
   color: rgb(103, 103, 103);
   text-decoration: line-through;
 }
+
 .ul li {
+  border-bottom: 1px solid #1976d2;
+}
+.flex {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  border-bottom: 1px solid #1976d2;
 }
 
 .ul button {
