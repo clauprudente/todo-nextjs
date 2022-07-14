@@ -5,9 +5,9 @@
   margin: 0px;
 }
 
-.active {
-  color: rgb(103, 103, 103);
+.active div {
   text-decoration: line-through;
+  color: rgb(103, 103, 103);
 }
 
 .ul li {

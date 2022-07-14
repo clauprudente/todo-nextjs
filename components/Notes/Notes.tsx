@@ -2,15 +2,10 @@ import { IconButton, Checkbox } from "@mui/material";
 import styles from "./Notes.module.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import INote from "../../interfaces/INote";
+import INotesProps from "../../interfaces/INotesProps";
 import React from "react";
 import { useRouter } from "next/router";
 import { useNotesContext } from "../../context/notes-context";
-interface INotesProps {
-  notes: INote[];
-  onDelete: Function;
-  onCheck: Function;
-}
 
 export const Notes = (props: INotesProps) => {
   const router = useRouter();
@@ -20,7 +15,10 @@ export const Notes = (props: INotesProps) => {
   const handleDelete = (index: number) => {
     props.onDelete(index);
   };
-  const handleChange = (event: React.ChangeEvent, index: number) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
     props.onCheck(event.target.checked, index);
   };
 

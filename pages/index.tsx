@@ -1,7 +1,7 @@
 import React from "react";
 import type { NextPage } from "next";
 import Link from "next/link";
-import styles from "../styles/home.module.css";
+import styles from "../styles/home.module.scss";
 import { Header, Notes } from "../components";
 import { Button } from "@mui/material";
 import { useNotesContext } from "../context/notes-context";

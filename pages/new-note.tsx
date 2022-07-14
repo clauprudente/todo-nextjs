@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Header } from "../components";
 import { Button, TextField, Checkbox } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import styles from "../styles/new-note.module.css";
+import styles from "../styles/new-note.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useNotesContext } from "../context/notes-context";
@@ -16,7 +16,11 @@ interface INewNotesProps {
 
 const NewNote: NextPage<INewNotesProps> = () => {
   const router = useRouter();
-  const [newNote, setNewNote] = useState<INote[]>([]);
+  const [newNote, setNewNote] = useState<INote>({
+    title: "",
+    checked: false,
+    description: "",
+  });
   const { isEdit, indexEdit, addNote, onEdit, getNote, onCheck } =
     useNotesContext();
 

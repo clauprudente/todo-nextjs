@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import INote from "../interfaces/INote";
+import ILayoutProps from "../interfaces/ILayoutProps";
 
 type notesContextProps = {
   notes: INote[];
@@ -32,9 +33,7 @@ export const NotesContext = React.createContext<notesContextProps>({
 export const useNotesContext = () => {
   return useContext(NotesContext);
 };
-
-//TODO: Resolver any
-export const NotesProvider = ({ children }: any) => {
+export const NotesProvider = ({ children }: ILayoutProps) => {
   const [notes, setNotes] = useState<INote[]>([]);
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const [indexEdit, setIndexEdit] = useState<number>(0);

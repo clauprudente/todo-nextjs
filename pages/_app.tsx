@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import "../styles/globals.scss";
 import React from "react";
 import { NotesProvider } from "../context/notes-context";
 import type { AppProps } from "next/app";
